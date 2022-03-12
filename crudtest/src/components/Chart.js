@@ -32,26 +32,27 @@ export default function Chart({ allVisitors }) {
       },
     },
   };
-
+  //Hash map for creating a chart with unique visitors
   const locationHash = new Map();
   allVisitors.map((visitor) => {
-    var count = locationHash.get(visitor.location);
-    if (locationHash.get(visitor.location) === visitor.location)
-      locationHash.set(visitor.location, count++);
-    else locationHash.set(visitor.location, 1);
+    if (locationHash.get(visitor.location)) {
+      var count = parseInt(locationHash.get(visitor.location)) + 1;
+      locationHash.set(visitor.location, count);
+      return visitor;
+    } else {
+      locationHash.set(visitor.location, 1);
+      return visitor;
+    }
   });
-
   var labels = [];
   for (let [key] of locationHash) {
     labels.push(key);
   }
   var locationCount = [];
-
   for (let [key, value] of locationHash) {
     locationCount.push(value);
+    console.log(key, value);
   }
-  console.log(locationCount);
-
   var data = {
     labels,
     datasets: [
