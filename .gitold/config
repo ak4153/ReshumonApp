@@ -1,0 +1,16 @@
+[core]
+	repositoryformatversion = 0
+	filemode = false
+	bare = false
+	logallrefupdates = true
+	symlinks = false
+	ignorecase = true
+[remote "heroku"]
+	url = https://git.heroku.com/crudotest.git
+	fetch = +refs/heads/*:refs/remotes/heroku/*
+[remote "origin"]
+	url = https://github.com/ak4153/Reshumon.git
+	fetch = +refs/heads/*:refs/remotes/origin/*
+[branch "main"]
+	remote = origin
+	merge = refs/heads/main
